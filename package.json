@@ -1,0 +1,24 @@
+{
+  "name": "points-of-interest-express-app-com518",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katwlodarczyk/com518.git"
+  },
+  "author": "kat wlodarczyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katwlodarczyk/com518/issues"
+  },
+  "homepage": "https://github.com/katwlodarczyk/com518#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.4"
+  }
+}

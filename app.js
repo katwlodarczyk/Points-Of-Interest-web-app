@@ -62,6 +62,17 @@ con.connect( err=> {
             });
         });
 
+        app.get('/poi/type/:type', (req, res) => {
+            con.query(`SELECT * FROM pointsofinterest WHERE type=?`,
+                [req.params.type], (error,results,fields) => { 
+                if(error) {
+                    res.status(500).json({ error: error });
+                } else {
+                    res.json(results);
+                }
+            });
+        });
+
 
         app.get('/poi/id/:id', (req, res) => {
             con.query(`SELECT * FROM pointsofinterest WHERE id=?`,
