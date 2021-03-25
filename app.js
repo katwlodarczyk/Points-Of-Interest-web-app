@@ -85,30 +85,54 @@ con.connect( err=> {
             });
         })
 
-        // app.post('/song/:id/buy', (req, res) => {
-        //     con.query('UPDATE wadsongs SET quantity=quantity-1 WHERE id=?', [req.params.id], (error,results,fields)=> {
-        //         if(error) {
-        //             res.status(500).json({error: error});
-        //         } else if(results.affectedRows==1) {
-        //             res.json({'message': 'Successfully bought.'});
-        //         } else {
-        //             res.status(404).json({error: 'No rows updated, could not find a record matching that ID'});
-        //         }
-        //     } );
-        // });
+        app.post('/poi/add-new/', (req,res) => {
+            con.query('INSERT INTO pointsofinterest(name,type,country,region,lon,lat,description,recommendations) VALUES (?,?,?,?,?,?,?,?)',[req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description, req.body.recommendations], (error,results, fields)=> {
+                if(error) {
+                    res.status(500).json({error: error});
+                } else {
+                    res.json({success: 1});
+                }
+            } );
+        });
 
-        // app.delete('/song/:id/delete', (req, res) => {
-        //     con.query('DELETE FROM wadsongs WHERE id=?', [req.params.id], (error,results,fields)=> {
-        //         if(error) {
-        //             res.status(500).json({error: error});
-        //         } else if(results.affectedRows==1) {
-        //             res.json({'message': 'Successfully deleted.'});
-        //         } else {
-        //             res.status(404).json({error: 'Could not delete: could not find a record matching that ID'});
-        //         }
-        //     } );
-        // });
+        app.post('/poi/:name/recommend', (req,res) => {
+            con.query('UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE name=?', [req.params.name], (error,results,fields)=> {
+                if(error) {
+                    res.status(500).json({error: error});
+                } else if(results.affectedRows==1) {
+                    res.json({'message': 'Successfully recommended.'});
+                } else {
+                    res.status(404).json({error: 'No rows updated, could not find a point of interest with matching name'});
+                }
+            } );
+        });
 
+
+        // const addNew = {
+        //     name: "Szczecin",
+        //     type:"city",
+        //     country:"Poland",
+        //     region:"Westpomeranian",
+        //     lon:53.44,
+        //     lat:14.54,
+        //     description: "Great city, Kat's hometown",
+        //     recommendations: 0 
+        //  }
+     
+        //  const response = await fetch(`/poi/add-new/`, {
+        //      method: 'POST',
+        //      headers: {
+        //          'Content-Type' : 'application/json'
+        //      },
+        //      body: JSON.stringify(addNew)
+        //  });
+     
+        //  if(response.status == 404) {
+        //      alert("Error. The point of interest has not been added!");
+        //  } else {
+        //      const data = await response.json();
+        //      alert(`You have added a new point of interest.`)
+        //  }
 
         // listen on port 3000
         app.listen(3000);
