@@ -9,6 +9,9 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    fontFamily: {
+      'inter' : ['Inter', 'sans-serif']
+    },
     extend: {
       colors: {
         'brand-navy' :  '#34485C',

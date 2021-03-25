@@ -14,33 +14,32 @@
     <link rel="stylesheet" href="allstyles.css">
     <link href="tailwind.css" rel="stylesheet">
 </head>
-<body class="h-screen overflow-y-auto">
-    <div class="p-10">
-<!-- header navigation -->
-        <div class="header flex justify-between">
-            <img src="assets/logo.svg" alt="logo">
-            <div class="nav flex">
-                <ul id="nav" class="flex flex-row space-x-6 items-center overflow-hidden">
-                    <li>
-                        <a href="javascript:void(0);" class="hamburger hidden" id="hamburger" onclick="hamburgerMenu()">
-                            <img src="assets/icons/menu.svg" alt="menu" />
-                        </a>
-                    </li>
-                    <li><a href="/about.html" class="text-brand-navy hover:text-brand-light-gray">About</a></li>
-                    <li>
-                        <a href="/login.html">
-                            <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.994 26.3498C7.368 26.3498 0 27.7098 0 33.1498C0 38.5918 7.322 39.9998 15.994 39.9998C24.62 39.9998 31.988 38.6418 31.988 33.1998C31.988 27.7578 24.668 26.3498 15.994 26.3498Z" fill="#200E32"/>
-                                <path opacity="0.4" d="M15.994 21.168C21.87 21.168 26.578 16.458 26.578 10.584C26.578 4.71 21.87 0 15.994 0C10.12 0 5.40997 4.71 5.40997 10.584C5.40997 16.458 10.12 21.168 15.994 21.168Z" fill="#506A7F"/>
-                            </svg> 
-                        </a>
-                    </li>
-                </ul>
-            </div>
+<body class="">
+    <!-- header navigation -->
+    <div class="px-4 pt-6 sm:px-16 sm:pt-10 pb-0 header flex justify-between">
+        <img src="assets/logo.svg" alt="logo">
+        <div class="nav flex">
+            <ul id="nav" class="flex flex-row space-x-6 items-center overflow-hidden">
+                <li>
+                    <a href="javascript:void(0);" class="hamburger hidden" id="hamburger" onclick="hamburgerMenu()">
+                        <img src="assets/icons/menu.svg" alt="menu" />
+                    </a>
+                </li>
+                <li><a href="/about.html" class="text-brand-navy hover:text-brand-light-gray">About</a></li>
+                <li>
+                    <a href="/login.html">
+                        <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.994 26.3498C7.368 26.3498 0 27.7098 0 33.1498C0 38.5918 7.322 39.9998 15.994 39.9998C24.62 39.9998 31.988 38.6418 31.988 33.1998C31.988 27.7578 24.668 26.3498 15.994 26.3498Z" fill="#200E32"/>
+                            <path opacity="0.4" d="M15.994 21.168C21.87 21.168 26.578 16.458 26.578 10.584C26.578 4.71 21.87 0 15.994 0C10.12 0 5.40997 4.71 5.40997 10.584C5.40997 16.458 10.12 21.168 15.994 21.168Z" fill="#506A7F"/>
+                        </svg> 
+                    </a>
+                </li>
+            </ul>
         </div>
-
+    </div>
+    <div class="px-4 sm:px-10 pb-10">
 <!-- search -->
-            <div class="relative py-16 sm:pt-36">
+            <div class="relative py-10 sm:pt-32">
               <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
                 <div class="relative rounded-2xl px-6 py-10 bg-brand-navy overflow-hidden shadow-xl sm:px-12 sm:py-20">
                   <div aria-hidden="true" class="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
@@ -70,7 +69,7 @@
                             </select>
                         </div>
                       <div class="mt-3 sm:mt-0 sm:ml-3">
-                        <button type="submit" class="block w-full rounded-md border border-transparent px-5 py-3 bg-brand-orange text-base text-white shadow hover:bg-opacity-70 focus:outline-none focus:ring focus:ring-brand-orange focus:ring-offset focus:ring-offset-brand-orange sm:px-10">Search</button>
+                        <button type="submit" class="block w-full rounded-md border border-transparent px-5 py-3 bg-brand-orange text-base text-white shadow hover:bg-opacity-90 focus:outline-none focus:ring focus:ring-brand-orange focus:ring-offset focus:ring-offset-brand-orange sm:px-10">Search</button>
                       </div>
                     </div>
                   </div>
@@ -78,24 +77,24 @@
               </div>
             </div>
 <!-- stats -->
-            <div class="flex flex-col sm:flex-row justify-center space-between space-y-4 sm:space-y-0 sm:space-x-20 pt-4 sm:pt-10">
+            <div class="flex flex-row justify-center space-between space-x-8 sm:space-x-20 pt-4 sm:pt-10 text-center">
                 <div class="flex flex-col space-y-1">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy self-center">874</h2>
-                    <p class="text-md font-medium text-cadet-blue">Places of interest</p>
+                    <h2 class="text-xl sm:text-5xl font-extrabold text-brand-navy self-center">874</h2>
+                    <p class="text-xs sm:text-md font-medium text-cadet-blue">Places of interest</p>
                 </div>
-                <div class="flex flex-col space-y-1 border-l-4 border-brand-navy pl-20">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy self-center">19</h2>
-                    <p class="text-md font-medium text-cadet-blue">Regions</p>
+                <div class="flex flex-col space-y-1 border-l-4 border-brand-navy pl-6 sm:pl-20">
+                    <h2 class="text-xl sm:text-5xl font-extrabold text-brand-navy self-center">19</h2>
+                    <p class="text-xs sm:text-md font-medium text-cadet-blue">Regions</p>
                 </div>
-                <div class="flex flex-col space-y-1 border-l-4 border-brand-navy pl-20">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-navy self-center">90</h2>
-                    <p class="text-md font-medium text-cadet-blue">Restaurants</p>
+                <div class="flex flex-col space-y-1 border-l-4 border-brand-navy pl-6 sm:pl-20">
+                    <h2 class="text-xl sm:text-5xl font-extrabold text-brand-navy self-center">90</h2>
+                    <p class="text-xs sm:text-md font-medium text-cadet-blue">Restaurants</p>
                 </div>
             </div>
     </div>
     <!-- FOOTER -->
-    <div class="bg-light-navy w-full absolute  fixed bottom-0 left-0 px-10 py-3">
-        <p class="text-white text-sm">©️ 2021 <a href="https://katwlodarczyk.com" class="hover:underline">Kat Wlodarczyk</a>. All rights reserved.</p>
+    <div class="bg-light-navy w-full fixed bottom-0 left-0 px-4 py-3">
+        <p class="text-white text-sm">©️ <span id="year"></span> <a href="https://katwlodarczyk.com" class="hover:underline">Kat Wlodarczyk</a>. All rights reserved.</p>
     </div>
     <script src="index.js"></script>
 </body>
