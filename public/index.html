@@ -58,18 +58,18 @@
                         World cities, historical sites, countryside areas, recommended restaurants, pubs, bars.
                       </p>
                     </div>
-                    <div class="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
+                    <div class="search mt-12 sm:mx-auto sm:max-w-lg sm:flex">
                         <div class="min-w-0 flex-1 sm:flex sm:flex-row justify-between">
-                            <label for="poi_search" class="sr-only">Poi search</label>
-                            <input id="poi_search" type="search" class="block w-full border border-transparent rounded-md sm:rounded-tr-none sm:rounded-br-none px-5 py-3 text-sm md:text-base text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:border-transparent" placeholder="Enter place of interest">
-                            <select id="poi_type" name="poi_type" class="w-full sm:w-auto focus:none outline-none py-3 pl-2 pr-7 border-transparent bg-white text-gray-500 text-sm md:text-base rounded-md sm:rounded-tr-md sm:rounded-br-md sm:rounded-tl-none sm:rounded-bl-none sm:border-l-2 sm:border-brand-light-gray mt-3 sm:mt-0">
+                            <label for="poiField" class="sr-only">Poi search</label>
+                            <input id="poiField" type="search" class="search-input block w-full border border-transparent rounded-md sm:rounded-tr-none sm:rounded-br-none px-5 py-3 text-sm md:text-base text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:border-transparent" placeholder="Enter the name of">
+                            <select id="poiType" name="poiType" class="w-full sm:w-auto focus:none outline-none py-3 pl-2 pr-7 border-transparent bg-white text-gray-500 text-sm md:text-base rounded-md sm:rounded-tr-md sm:rounded-br-md sm:rounded-tl-none sm:rounded-bl-none sm:border-l-2 sm:border-brand-light-gray mt-3 sm:mt-0">
                                 <option>Region</option>
                                 <option>Country</option>
                                 <option>Type</option>
                             </select>
                         </div>
                       <div class="mt-3 sm:mt-0 sm:ml-3">
-                        <button type="submit" class="block w-full rounded-md border border-transparent px-5 py-3 bg-brand-orange text-base text-white shadow hover:bg-opacity-90 focus:outline-none focus:ring focus:ring-brand-orange focus:ring-offset focus:ring-offset-brand-orange sm:px-10">Search</button>
+                        <button type="submit" id="seachButton" class="search-button block w-full rounded-md border border-transparent px-5 py-3 bg-brand-orange text-base text-white shadow hover:bg-opacity-90 focus:outline-none focus:ring focus:ring-brand-orange focus:ring-offset focus:ring-offset-brand-orange sm:px-10">Search</button>
                       </div>
                     </div>
                   </div>
@@ -91,7 +91,17 @@
                     <p class="text-base sm:text-lg font-medium text-cadet-blue">Restaurants</p>
                 </div>
             </div>
+
+             <!-- SEARCH RESULTS -->
+    <div id="resultsContainer" class="py-10 flex flex-col">
+      <div id="results" class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        
+      </div>
     </div>
+
+    
+    </div>
+
     <!-- FOOTER -->
     <div class="bg-light-navy w-full fixed bottom-0 left-0 px-4 py-3">
         <p class="text-white text-sm">©️ <span id="year"></span> <a href="https://katwlodarczyk.com" class="hover:underline">Kat Wlodarczyk</a>. All rights reserved.</p>
