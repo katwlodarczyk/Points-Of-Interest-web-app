@@ -133,3 +133,23 @@ function hamburgerMenu() {
     }
   }
 
+  // STAT COUNTER
+  function animateNumber(id, start, end, duration) {
+    if (start === end) return;
+    var range = end - start;
+    var now = start;
+    var increment = end > start? 1 : -1;
+    var stepTime = Math.abs(Math.floor(duration / range));
+    var obj = document.getElementById(id);
+    var counter = setInterval(function() {
+        now += increment;
+        obj.innerHTML = now;
+        if (now == end) {
+            clearInterval(counter);
+        }
+    }, stepTime);
+}
+
+animateNumber("statAll", 0, 332, 5000);
+animateNumber("statRegions", 0, 19, 5000);
+animateNumber("statRestaurants", 0, 99, 5000);
