@@ -79,7 +79,7 @@ async function poiSearch(type, field) {
   document.getElementById('results').innerHTML = "";
   let resultsdivsstart =
     `
-    <h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Your results:</h2>
+    <h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-bold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2>
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
@@ -124,7 +124,7 @@ async function poiSearch(type, field) {
     <tbody>
   `;
 
-  let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Your results:</h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
+  let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
 
   if (result.length === 0){
       document.getElementById('results').innerHTML = noResultsNotification + html;
