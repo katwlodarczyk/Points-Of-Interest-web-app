@@ -67,8 +67,8 @@ poiRouter.post('/add-new', (req,res) => {
     } );
 });
 
-poiRouter.post('/:name/recommend', (req,res) => {
-    con.query('UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE name=?', [req.params.name], (error,results,fields)=> {
+poiRouter.post('/:id/recommend', (req,res) => {
+    con.query('UPDATE pointsofinterest SET recommendations=recommendations+1 WHERE id=?', [req.params.id], (error,results,fields)=> {
         if(error) {
             res.status(500).json({error: error});
         } else if(results.affectedRows==1) {

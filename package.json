@@ -18,6 +18,8 @@
   "homepage": "https://github.com/katwlodarczyk/com518",
   "devDependencies": {},
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "dotenv": "^8.2.0",
+    "izitoast": "^1.4.0"
   }
 }
