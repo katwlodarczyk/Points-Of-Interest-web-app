@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/katwlodarczyk/com518/issues"
   },
-  "homepage": "https://github.com/katwlodarczyk/com518#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/katwlodarczyk/com518",
+  "devDependencies": {},
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }
