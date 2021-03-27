@@ -215,3 +215,54 @@ if (document.getElementById('recommendButton')){
 
 
 
+//  recommend a poi
+async function addNewPoi(name,region,country,type,lon,lat,description) {
+  const newPoi = {
+     name: name,
+     region: region,
+     country: country,
+     type: type,
+     lon: lon,
+     lat: lat,
+     description : description
+  }
+
+  const response = await fetch(`/addNew`, {
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(newPoi)
+  });
+
+  if(response.status == 404) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Could not add a point of interest. Please try again.',
+  });
+  } else {
+      const data = await response.json();
+      iziToast.success({
+        title: 'Success',
+        message: 'You have added a new point of interest.',
+    });
+  } 
+}
+
+// Make the AJAX run when user clicks recommend button
+if (document.getElementById('addNewButton')){
+  document.getElementById('addNewButton').addEventListener('click', ()=> {
+    const name = document.getElementById('name').value;
+    const region = document.getElementById('region').value;
+    const country = document.getElementById('country').value;
+    const type = document.getElementById('type').value;
+    const lon = document.getElementById('lon').value;
+    const lat = document.getElementById('lat').value;
+    const description = document.getElementById('description').value;
+    addNewPoi(name,region,country,type,lon,lat,description);
+  });
+}
+
+
+
+

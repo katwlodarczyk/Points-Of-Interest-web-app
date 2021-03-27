@@ -27,12 +27,12 @@
         <div class="nav flex self-center">
             <ul id="nav" class="flex flex-row space-x-6 items-center">
               <li>
-                <button type="button" onclick="location.href='/addNew.html'"  class="group inline-flex items-center px-4 py-2 border border-transparent shadow text-base font-medium rounded-md text-brand-navy bg-brand-light-gray hover:bg-brand-navy hover:text-brand-light-gray focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="/addNew" class="group inline-flex items-center px-4 py-2 border border-transparent shadow text-base font-medium rounded-md text-brand-navy bg-brand-light-gray hover:bg-brand-navy hover:text-brand-light-gray focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-light-gray">
                   <svg class="-ml-1 mr-3 h-5 w-5 text-brand-navy group-hover:text-brand-light-gray fill-current" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.6409 9.41667H9.49904V14.514C9.49904 15.3347 8.8279 16 8 16C7.1721 16 6.50096 15.3347 6.50096 14.514V9.41667H1.35909C0.586845 9.3374 0 8.69228 0 7.92264C0 7.153 0.586845 6.50789 1.35909 6.42861H6.48484V1.34731C6.56481 0.581757 7.21557 0 7.99194 0C8.76832 0 9.41907 0.581757 9.49904 1.34731V6.42861H14.6409C15.4132 6.50789 16 7.153 16 7.92264C16 8.69228 15.4132 9.3374 14.6409 9.41667Z" fill="fill-current"/>
                     </svg>
                     Add new
-                </button>
+                </a>
               </li>
                 <li><a href="/about.html" class="text-brand-navy hover:text-brand-light-gray">About</a></li>
                 <li>
@@ -129,12 +129,12 @@
                                             Description
                                         </label>
                                         <div class="mt-1">
-                                            <textarea id="Description" name="Description" rows="6" class="text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-2 px-3 block w-full sm:text-sm "></textarea>
+                                            <textarea id="description" name="Description" rows="6" class="text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-2 px-3 block w-full sm:text-sm "></textarea>
                                         </div>
                                     </div>
                                 </div>
                             <div class="py-3 text-left">
-                                <button type="submit" class="bg-cadet-blue border border-transparent rounded-md shadow-sm py-2 px-6 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
+                                <button id="addNewButton"  type="submit" class="bg-cadet-blue border border-transparent rounded-md shadow-sm py-2 px-6 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
                                     Create
                                 </button>
                             </div>
