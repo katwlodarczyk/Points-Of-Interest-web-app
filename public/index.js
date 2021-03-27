@@ -82,7 +82,7 @@ async function poiSearch(type, field) {
   let resultsdivsstart =
     `
     <h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-bold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2>
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 pb-4 sm:pb-10">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
     `
