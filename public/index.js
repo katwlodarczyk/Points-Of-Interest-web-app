@@ -35,10 +35,12 @@ function animateNumber(id, start, end, duration) {
       }
   }, stepTime);
 }
+if (document.getElementById('stats')) {
+  animateNumber("statAll", 0, 332, 5000);
+  animateNumber("statRegions", 0, 19, 5000);
+  animateNumber("statRestaurants", 0, 99, 5000);
 
-animateNumber("statAll", 0, 332, 5000);
-animateNumber("statRegions", 0, 19, 5000);
-animateNumber("statRestaurants", 0, 99, 5000);
+}
 
 //TO TOP BUTTON
 
@@ -203,10 +205,12 @@ async function recommend(id) {
 }
 
 // Make the AJAX run when user clicks recommend button
-document.getElementById('recommendButton').addEventListener('click', ()=> {
-  const id = `${result.id}`;
-  recommend(id);
-});
+if (document.getElementById('recommendButton')){
+  document.getElementById('recommendButton').addEventListener('click', ()=> {
+    const id = `${result.id}`;
+    recommend(id);
+  });
+}
 
 
 

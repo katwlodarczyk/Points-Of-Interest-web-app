@@ -32228,47 +32228,6 @@ body {
   font-family: 'Inter', sans-serif;
 };
 
-@media (max-width: 768px) {
-  .links a {
-    display: none;
-  }
-
-  .links .hamburger {
-    margin-top: -10px;
-  }
-
-  .links a.hamburger {
-    float: right;
-    display: block;
-    transition: 0.3s ease-in-out;
-    transform: rotate(-180deg);
-  }
-
-  .links.responsive .hamburger {
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: 0.4s ease-in-out;
-    transform: rotate(180deg);
-  }
-
-  .links {
-    overflow: hidden;
-    transition: 0.9s ease-in-out;
-  }
-
-  .links.responsive {
-    position: relative;
-    transition: 0.9s ease-in-out;
-  }
-
-  .links.responsive a {
-    float: none;
-    display: block;
-    text-align: right;
-  }
-}
-
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
