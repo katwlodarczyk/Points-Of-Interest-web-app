@@ -225,7 +225,7 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
      'description' : description
   }
 
-  const response = await fetch(`/addNew`, {
+  const response = await fetch(`/addNew/poi`, {
       method: 'POST',
       headers: {
           'Content-Type' : 'application/json'
@@ -240,10 +240,18 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
   });
   } else {
       const data = await response.json();
+      document.getElementById('name').value='';
+      document.getElementById('region').value='';
+      document.getElementById('country').value='';
+      document.getElementById('type').value='';
+      document.getElementById('lon').value='';
+      document.getElementById('lat').value='';
+      document.getElementById('description').value='';
       iziToast.success({
         title: 'Success',
         message: 'You have added a new point of interest.',
     });
+
   } 
 }
 

@@ -3,8 +3,7 @@ const addNewRouter = express.Router();
 const con = require('../mysqlconn');
 
 addNewRouter.get('/', (req, res, next) => {
-    console.log("hi");
-    // res.sendFile(`${process.env.PWD}/public/addNew.html`)
+    res.sendFile(`${process.env.PWD}/public/addNew.html`)
 });
 
 addNewRouter.post('/poi', (req,res) => {
