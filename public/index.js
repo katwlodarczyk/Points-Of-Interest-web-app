@@ -241,7 +241,7 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
   } else if(response.status == 500){
     iziToast.error({
       title: 'Error',
-      message: 'All fields must be filled',
+      message: 'All fields must be filled with correct data.',
   });
   } else {
       const data = await response.json();
@@ -260,20 +260,23 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
   } 
 }
 
-// Make the AJAX run when user clicks recommend button
+// Make the AJAX run when user clicks add button
 if (document.getElementById('addNewButton')){
   document.getElementById('addNewButton').addEventListener('click', ()=> {
-    const name = document.getElementById('name').value;
-    const region = document.getElementById('region').value;
-    const country = document.getElementById('country').value;
-    const type = document.getElementById('type').value;
-    const lon = document.getElementById('lon').value;
-    const lat = document.getElementById('lat').value;
-    const description = document.getElementById('description').value;
-    ajaxAddNewPoi(name,region,country,type,lon,lat,description);
+      const name = document.getElementById('name').value;
+      const region = document.getElementById('region').value;
+      const country = document.getElementById('country').value;
+      const type = document.getElementById('type').value;
+      const lon = document.getElementById('lon').value;
+      const lat = document.getElementById('lat').value;
+      const description = document.getElementById('description').value;
+
+
+    if (!name.length || !region.length || !country.length || !type.length || !lon.length || !lat.length || !description.length) {
+      document.getElementById('error-msg').classList.remove('hidden');
+    } else {
+      document.getElementById('error-msg').classList.add('hidden');
+      ajaxAddNewPoi(name,region,country,type,lon,lat,description);
+    };
   });
 }
-
-
-
-
