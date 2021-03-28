@@ -213,7 +213,7 @@ if (document.getElementById('recommendButton')){
 }
 
 
-//  recommend a poi
+//  add a poi
 async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
   const newPoi = {
      'name': name,
@@ -237,6 +237,11 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
     iziToast.error({
       title: 'Error',
       message: 'Could not add a point of interest. Please try again.',
+  });
+  } else if(response.status == 500){
+    iziToast.error({
+      title: 'Error',
+      message: 'All fields must be filled',
   });
   } else {
       const data = await response.json();
