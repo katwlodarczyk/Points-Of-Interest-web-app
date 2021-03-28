@@ -115,31 +115,31 @@
                                     </div>
                         
                                     <div class="col-span-6 sm:col-span-2">
-                                        <label for="Lon" class="block text-sm font-medium text-brand-navy">Longitude</label>
+                                        <label for="lon" class="block text-sm font-medium text-brand-navy">Longitude</label>
                                         <input type="text" name="lon" id="lon" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue sm:text-sm">
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-2">
-                                        <label for="Lat" class="block text-sm font-medium text-brand-navy">Latitude</label>
+                                        <label for="lat" class="block text-sm font-medium text-brand-navy">Latitude</label>
                                         <input type="text" name="lat" id="lat" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue sm:text-sm">
                                     </div>
                         
                                     <div class="col-span-6">
-                                        <label for="about" class="block text-sm font-medium text-brand-navy">
+                                        <label for="description" class="block text-sm font-medium text-brand-navy">
                                             Description
                                         </label>
                                         <div class="mt-1">
-                                            <textarea id="description" name="Description" rows="6" class="text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-2 px-3 block w-full sm:text-sm "></textarea>
+                                            <textarea id="description" name="description" rows="6" class="text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-2 px-3 block w-full sm:text-sm "></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            <div class="py-3 text-left">
-                                <button id="addNewButton"  type="submit" class="bg-cadet-blue border border-transparent rounded-md shadow-sm py-2 px-6 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
-                                    Create
-                                </button>
+                                <div class="py-3 text-left">
+                                    <button id="addNewButton"  type="submit" class="bg-cadet-blue border border-transparent rounded-md shadow-sm py-2 px-6 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
+                                        Create
+                                    </button>
+                                </div>
                             </div>
                         </form>
-                    </div>
                     </div>
                     <div class="hidden sm:block sm:w-1/2 self-center">
                         <img class="mx-auto" src="./assets/Manfindinglocationinmap.png" alt="decorative image" />
@@ -151,6 +151,6 @@
         <p class="text-white text-sm">©️ <span id="year"></span> <a href="https://katwlodarczyk.com" class="hover:underline">Kat Wlodarczyk</a>. All rights reserved.</p>
     </div>
     <script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>
-    <script src="index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
