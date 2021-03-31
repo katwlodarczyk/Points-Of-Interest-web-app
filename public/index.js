@@ -78,6 +78,7 @@ async function poiSearch(type, field) {
   const result = await response.json();
   // Loop through the array of JSON objects and add the results to a <div>
   let html = "";
+  document.getElementById('mapResults').innerHTML = "";
   document.getElementById('results').innerHTML = "";
 
   let header =
@@ -85,9 +86,9 @@ async function poiSearch(type, field) {
       <div class="flex flex-row justify-between sm:px-6 lg:px-8 py-4 text-md text-brand-navy ">
         <h2 class="text-2xl font-bold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2>
         <div>
-          <button id="mapButton" class="hover:text-bold">Map</button>
+          <button onclick="mapButtonClicked()" id="mapButton" class="focus:outline-none hover:font-bold">Map</button>
           <span> | </span>
-          <button id="tableButton" class="hover:text-bold">Table</button>
+          <button onclick="tableButtonClicked()" id="tableButton" class="focus:outline-none font-bold hover:font-bold">Table</button>
         </div>
       </div>
     `
@@ -179,7 +180,6 @@ async function poiSearch(type, field) {
 
 // SEARCH WITH MAP
 async function poiSearchMap(type, field) {
-  console.log("map");
   // Send a request to our remote URL
   const response = await  fetch(`/poi/${type}/${field}`);
 
@@ -187,20 +187,10 @@ async function poiSearchMap(type, field) {
   const result = await response.json();
   // Loop through the array of JSON objects and add the results to a <div>
   let html = "";
-  document.getElementById('resultsContainer').innerHTML = "";
-    `
-      <div class="flex flex-row justify-between sm:px-6 lg:px-8 py-4 text-md text-brand-navy ">
-        <h2 class="text-2xl font-bold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2>
-        <div>
-          <button id="mapButton" class="hover:text-bold">Map</button>
-          <span> | </span>
-          <button id="tableButton" class="hover:text-bold">Table</button>
-        </div>
-      </div>
-    `
+  document.getElementById('mapResults').innerHTML = "";
       
   var resultHeaderDiv = document.createElement("div");
-  resultHeaderDiv.className = "flex flex-row justify-between sm:px-6 lg:px-8 py-4 text-md text-brand-navy" ;
+  resultHeaderDiv.className = "flex flex-row justify-between items-center sm:px-6 lg:px-8 py-4 text-md text-brand-navy" ;
 
   var resultHeader = document.createElement("h2");
   resultHeader.className= "sm:px-6 lg:px-8 py-4 text-brand-navy text-2xl font-bold";
@@ -209,11 +199,17 @@ async function poiSearchMap(type, field) {
   var resultButtons = document.createElement("div");
   resultButtons.className="divide-x divide-2 divide-brand-navy";
   var mapButton = document.createElement("button");
-  mapButton.className = "hover:text-bold pr-3 focus:outline-none";
+  mapButton.className = "font-bold hover:font-bold pr-3 focus:outline-none";
   mapButton.id="mapButton";
   var tableButton = document.createElement("button");
-  tableButton.className= "hover:text-bold pl-3 focus:outline-none";
+  tableButton.className= "hover:font-bold pl-3 focus:outline-none";
   tableButton.id= "tableButton";
+  tableButton.addEventListener('click', ()=> {
+    document.getElementById("mapResults").innerHTML= "";
+    const type = document.getElementById('poiType').value;
+    const field = document.getElementById('poiField').value;
+    poiSearch(type, field);
+  });
 
   var mapButtonText = document.createTextNode("Map");
   var tableButtonText = document.createTextNode("Table");
@@ -225,13 +221,13 @@ async function poiSearchMap(type, field) {
   resultButtons.appendChild(tableButton);
   resultHeaderDiv.appendChild(resultHeader);
   resultHeaderDiv.appendChild(resultButtons);
-  document.getElementById('resultsContainer').appendChild(resultHeaderDiv);
+  document.getElementById('mapResults').appendChild(resultHeaderDiv);
  
 
   var div = document.createElement("div");
   div.id = "map1";
-  div.className = "sm:mx-6 lg:mx-8 w-auto";
-  document.getElementById('resultsContainer').appendChild(div);
+  div.className = "sm:mx-6 lg:mx-16 lg:mr-8 w-auto h-96 z-10";
+  document.getElementById('mapResults').appendChild(div);
 
   const map = L.map ("map1");
   const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
@@ -243,12 +239,12 @@ async function poiSearchMap(type, field) {
   let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
 
   if (result.length === 0){
-      document.getElementById('resultsContainer').innerHTML = noResultsNotification;
+      document.getElementById('mapResults').innerHTML = noResultsNotification;
   } else {
       result.forEach ( result => {
            
         const pos = [`${result.lat}`, `${result.lon}`];            
-        map.setView(pos, 12);
+        map.setView(pos, 8);
 
         const marker = L.marker(pos).addTo(map);
         marker.bindPopup(`${result.name}'s Hometown: ${result.hometown}`);
@@ -257,6 +253,12 @@ async function poiSearchMap(type, field) {
   }
 }
 
+function mapButtonClicked() {
+  document.getElementById("results").innerHTML= "";
+  const type = document.getElementById('poiType').value;
+  const field = document.getElementById('poiField').value;
+  poiSearchMap(type, field);
+}
 
 // Make the AJAX run when we click a search button
 document.getElementById('searchButton').addEventListener('click', ()=> {
