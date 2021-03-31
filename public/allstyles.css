@@ -32228,6 +32228,11 @@ body {
   font-family: 'Inter', sans-serif;
 };
 
+#map1 {
+  width: 798px;
+  height:500px;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

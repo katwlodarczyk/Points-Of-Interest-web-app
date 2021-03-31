@@ -6,3 +6,8 @@ body {
     background: url(assets/bg.png) repeat center;
     font-family: 'Inter', sans-serif;
 };
+
+#map1 {
+    width: 798px;
+    height:500px;
+}
