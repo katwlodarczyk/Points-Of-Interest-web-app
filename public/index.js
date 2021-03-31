@@ -197,12 +197,15 @@ async function poiSearchMap(type, field) {
   var resultHeaderText = document.createTextNode(`Results for: ${field}, ${type}`);
 
   var resultButtons = document.createElement("div");
-  resultButtons.className="divide-x divide-2 divide-brand-navy";
+  resultButtons.className="";
   var mapButton = document.createElement("button");
-  mapButton.className = "font-bold hover:font-bold pr-3 focus:outline-none";
+  mapButton.className = "font-bold hover:font-bold focus:outline-none";
   mapButton.id="mapButton";
+  var divider = document.createElement("span");
+  var dividerText = document.createTextNode(" | ");
+  divider.className = "";
   var tableButton = document.createElement("button");
-  tableButton.className= "hover:font-bold pl-3 focus:outline-none";
+  tableButton.className= "hover:font-bold focus:outline-none";
   tableButton.id= "tableButton";
   tableButton.addEventListener('click', ()=> {
     document.getElementById("mapResults").innerHTML= "";
@@ -216,8 +219,10 @@ async function poiSearchMap(type, field) {
   
   resultHeader.appendChild(resultHeaderText);
   mapButton.appendChild(mapButtonText);
+  divider.appendChild(dividerText);
   tableButton.appendChild(tableButtonText);
   resultButtons.appendChild(mapButton);
+  resultButtons.appendChild(divider);
   resultButtons.appendChild(tableButton);
   resultHeaderDiv.appendChild(resultHeader);
   resultHeaderDiv.appendChild(resultButtons);
@@ -226,7 +231,7 @@ async function poiSearchMap(type, field) {
 
   var div = document.createElement("div");
   div.id = "map1";
-  div.className = "sm:mx-6 lg:mx-16 lg:mr-8 w-auto h-96 z-10";
+  div.className = "sm:mx-6 lg:mx-16 lg:mr-8 w-auto h-43.75 z-10";
   document.getElementById('mapResults').appendChild(div);
 
   const map = L.map ("map1");
@@ -247,7 +252,7 @@ async function poiSearchMap(type, field) {
         map.setView(pos, 8);
 
         const marker = L.marker(pos).addTo(map);
-        marker.bindPopup(`${result.name}'s Hometown: ${result.hometown}`);
+        marker.bindPopup(`<b>Name:</b> ${result.name} <br> <b>Description:</b> ${result.description}`);
       });
      
   }

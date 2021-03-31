@@ -21,6 +21,9 @@ module.exports = {
         'brand-smoke' : '#f4f7f9',
         'cadet-blue' : '#7b9eb4',
       },
+      height: {
+        '43.75' : '43.75rem',
+      },
     },
   },
   variants: {
