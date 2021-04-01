@@ -300,12 +300,6 @@ async function poiSearchMap(type, field) {
    
           }],
       ],
-      // onClosing: function(instance, toast, closedBy){
-         
-      // },
-      // onClosed: function(instance, toast, closedBy){
-  
-      // }
   });
   });
        
@@ -548,21 +542,21 @@ async function login(username, password) {
       },
       body: JSON.stringify(loginDetails)
   });
+  const data = await response.json();
 
-  if(response.status == 401) {
-    iziToast.error({
-      title: 'Error',
-      message: 'The credentials do not match. Please try again',
-  });
-  } else {
-      const data = await response.json();
+  if(data) {
       iziToast.success({
         title: 'Success',
-        message: `You have logged in.`,
+        message: `You have logged in as ${data.username}`,
         timeout: 1000,
         onClosing: function(instance, toast, closedBy){
           window.location="/"
       }
+    });
+  } else {
+    iziToast.error({
+      title: 'Error',
+      message: 'The credentials do not match. Please try again',
     });
   } 
 }
