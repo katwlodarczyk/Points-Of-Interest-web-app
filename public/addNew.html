@@ -27,7 +27,9 @@
   </button>
 <!-- header navigation -->
     <div class="px-4 pt-6 sm:px-16 sm:pt-10 pb-0 header flex flex-col sm:flex-row justify-between">
-        <a href="/"><img class="pb-4 sm:pb-0" src="assets/logo.svg" alt="logo"></a>
+        <a class="flex justify-center sm:justify-start" href="/">
+            <img class="pb-4 sm:pb-0" src="assets/logo.svg" alt="logo">
+        </a>
         <div class="nav flex self-center">
             <ul id="nav" class="flex flex-row space-x-6 items-center">
               <li>
@@ -70,10 +72,14 @@
 
             <div class="px-4 sm:px-10 py-6 flex flex-col justify-between">
 <!-- SEARCH RESULTS -->
-                <div id="resultsContainer" class="flex flex-col">
-                    <div id="results" class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    </div>
+            <div id="resultsContainer" class="flex flex-col">
+                <div id="mapResults">
+
                 </div>
+                <div id="results" class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                
+                </div>
+            </div>
 
 <!-- Add new  -->
                 <div class="flex flex-row justify-between">
@@ -154,7 +160,7 @@
                 </div>
             </div>
     <!-- FOOTER -->
-    <div class="bg-light-navy w-full fixed bottom-0 left-0 px-4 py-3">
+    <div class="bg-light-navy w-full fixed bottom-0 left-0 px-4 py-3 z-50">
         <p class="text-white text-sm">©️ <span id="year"></span> <a href="https://katwlodarczyk.com" class="hover:underline">Kat Wlodarczyk</a>. All rights reserved.</p>
     </div>
     <script src='https://unpkg.com/izitoast/dist/js/iziToast.min.js'></script>

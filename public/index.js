@@ -193,7 +193,7 @@ async function poiSearchMap(type, field) {
   resultHeaderDiv.className = "flex flex-row justify-between items-center sm:px-6 lg:px-8 py-4 text-md text-brand-navy" ;
 
   var resultHeader = document.createElement("h2");
-  resultHeader.className= "sm:px-6 lg:px-8 py-4 text-brand-navy text-2xl font-bold";
+  resultHeader.className= "py-4 text-brand-navy text-2xl font-bold";
   var resultHeaderText = document.createTextNode(`Results for: ${field}, ${type}`);
 
   var resultButtons = document.createElement("div");
@@ -231,7 +231,7 @@ async function poiSearchMap(type, field) {
 
   var div = document.createElement("div");
   div.id = "map1";
-  div.className = "sm:mx-6 lg:mx-16 lg:mr-8 w-auto h-43.75 z-10";
+  div.className = "sm:mx-6 lg:mx-8 lg:mr-8 w-auto mb-8 h-43.75 z-10";
   document.getElementById('mapResults').appendChild(div);
 
   const map = L.map ("map1");
@@ -241,7 +241,7 @@ async function poiSearchMap(type, field) {
               { attribution: attrib } ).addTo(map);
 
        
-  let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
+  let noResultsNotification = `<h2 class="py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
 
   if (result.length === 0){
       document.getElementById('mapResults').innerHTML = noResultsNotification;
