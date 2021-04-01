@@ -138,7 +138,7 @@ async function poiSearch(type, field) {
     <tbody>
   `;
 
-  let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
+  let noResultsNotification = `<h2 class="sm:px-6 lg:px-8 py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Please check your spelling or search for something else!</p>`
 
   if (result.length === 0){
       document.getElementById('results').innerHTML = noResultsNotification + html;
@@ -177,6 +177,25 @@ async function poiSearch(type, field) {
       document.getElementById('results').innerHTML = header +  resultsdivsstart + tableHeader + html + resultsdivsend;
   }
 }
+
+// function addNew(){
+//   const name = document.getElementById('name').value;
+//   const region = document.getElementById('region').value;
+//   const country = document.getElementById('country').value;
+//   const type = document.getElementById('type').value;
+//   const description = document.getElementById('description').value;
+//   const lon = `${e.latlng.lng}`;
+//   const lat = `${e.latlng.lat}`;
+
+
+//   if (!name.length || !region.length || !country.length || !type.length || !description.length) {
+//     document.getElementById('error-msg').classList.remove('hidden');
+//   } else {
+//     document.getElementById('error-msg').classList.add('hidden');
+//     ajaxAddNewPoi(name,region,country,type,lon, lat, description);
+//   };
+// }
+
 
 // SEARCH WITH MAP
 async function poiSearchMap(type, field) {
@@ -234,14 +253,82 @@ async function poiSearchMap(type, field) {
   div.className = "sm:mx-6 lg:mx-8 lg:mr-8 w-auto mb-8 h-43.75 z-10";
   document.getElementById('mapResults').appendChild(div);
 
+  
   const map = L.map ("map1");
   const attrib="Map data copyright OpenStreetMap contributors, Open Database Licence";
   L.tileLayer
           ("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               { attribution: attrib } ).addTo(map);
 
+  map.on("click", e => {
+    iziToast.question({
+      timeout: 20000,
+      close: false,
+      overlay: true,
+      displayMode: 'once',
+      id: 'question',
+      zindex: 999,
+      title: 'Add New?',
+      message: 'Would you like to add a new point of interest?',
+      position: 'center',
+      buttons: [
+          ['<button><b>YES</b></button>', function (instance, toast) {
+   
+              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+              const newPos = [`${e.latlng.lat}`, `${e.latlng.lng}`];       
+              const newMarker = L.marker(newPos).addTo(map);
+              newMarker.bindPopup(`
+              <b>Name:</b>
+              <input type="text" name="name" id="name" class="text-brand-navy mt-1 block w-32 border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue text-xs">
+              <b>Region:</b>
+                <input type="text" name="region" id="region" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue text-xs">
+              <b>Country:</b> 
+                <input type="text" name="country" id="country" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue text-xs">
+              <b>Type:</b>
+                <select id="type" name="type" class="text-brand-navy mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue text-xs">
+                <option>City</option>
+                <option>Hill</option>
+                <option>Industrial Estate</option>
+                <option>Lost City</option>
+                <option>Moor</option>
+                <option>Mountain</option>
+                <option>Point</option>
+                <option>Port</option>
+                <option>Pob</option>
+                <option>Restaurant</option>
+                <option>Town</option>
+              </select>
+              <b>Lon:</b> 
+              <input type="number" name="lon" id="lon" value="${e.latlng.lng}" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue sm:text-sm">
+              <b>Lat:</b>
+              <input type="number" name="lat" id="lat" value="${e.latlng.lat}" class="text-brand-navy mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-1 px-2 focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue sm:text-sm">
+             
+              <b>Description:</b>
+              <textarea id="description" name="description" rows="2" class="text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-1 px-2 block w-full text-xs"></textarea>
+              <span id="error-msg" class="pt-1 pb-0 hidden col-span-6 text-xs text-red-500">Plase fill all of the fields.</span>
+              <button onClick="addNew()" id="addNewButton" type="submit" class="w-full bg-cadet-blue border border-transparent rounded-md shadow-sm mt-2 py-1 px-2 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
+                  Create
+              </button>
+              `).openPopup();
+             
+   
+          }, true],
+          ['<button>NO</button>', function (instance, toast) {
+   
+              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+   
+          }],
+      ],
+      // onClosing: function(instance, toast, closedBy){
+         
+      // },
+      // onClosed: function(instance, toast, closedBy){
+  
+      // }
+  });
+  });
        
-  let noResultsNotification = `<h2 class="py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Plase check your spelling or search for something else!</p>`
+  let noResultsNotification = `<h2 class="py-4 text-2xl text-brand-navy font-extrabold">Results for: <span class="pl-1 font-extrabold">${field}, ${type}</span></h2><p class="text-brand-navy text-xl font-normal sm:px-6 lg:px-8">Oops... Sorry, no matching results. Please check your spelling or search for something else!</p>`
 
   if (result.length === 0){
       document.getElementById('mapResults').innerHTML = noResultsNotification;
@@ -257,6 +344,65 @@ async function poiSearchMap(type, field) {
      
   }
 }
+
+
+function addNew(){
+  const name = document.getElementById('name').value;
+  const region = document.getElementById('region').value;
+  const country = document.getElementById('country').value;
+  const type = document.getElementById('type').value;
+  const description = document.getElementById('description').value;
+  const lon = document.getElementById('lon').value;
+  const lat = document.getElementById('lat').value;
+
+
+  if (!name.length || !region.length || !country.length || !type.length || !description.length) {
+    document.getElementById('error-msg').classList.remove('hidden');
+  } else {
+    document.getElementById('error-msg').classList.add('hidden');
+    ajaxAddNewMapPoi(name,region,country,type,lon, lat, description);
+  };
+}
+
+//  add a poi
+async function ajaxAddNewMapPoi(name,region,country,type,lon,lat,description) {
+  const newPoi = {
+     'name': name,
+     'region': region,
+     'country': country,
+     'type': type,
+     'lon': lon,
+     'lat': lat,
+     'description' : description
+  }
+
+  const response = await fetch(`/addNew/poi`, {
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(newPoi)
+  });
+
+  if(response.status == 404) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Could not add a point of interest. Please try again.',
+  });
+  } else if(response.status == 500){
+    iziToast.error({
+      title: 'Error',
+      message: 'All fields must be filled with correct data.',
+  });
+  } else {
+      const data = await response.json();
+      iziToast.success({
+        title: 'Success',
+        message: 'You have added a new point of interest.',
+    });
+  } 
+}
+
 
 function mapButtonClicked() {
   document.getElementById("results").innerHTML= "";
