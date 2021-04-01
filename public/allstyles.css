@@ -32232,15 +32232,6 @@ body {
   font-family: 'Inter', sans-serif;
 };
 
-/* #map1 {
-    width: 798px;
-    height:500px;
-} */
-
-.leaflet-popup-content-wrapper .leaflet-popup-content {
-  width: 100px !important;
-}
-
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

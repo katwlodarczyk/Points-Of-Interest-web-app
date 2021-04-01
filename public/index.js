@@ -178,25 +178,6 @@ async function poiSearch(type, field) {
   }
 }
 
-// function addNew(){
-//   const name = document.getElementById('name').value;
-//   const region = document.getElementById('region').value;
-//   const country = document.getElementById('country').value;
-//   const type = document.getElementById('type').value;
-//   const description = document.getElementById('description').value;
-//   const lon = `${e.latlng.lng}`;
-//   const lat = `${e.latlng.lat}`;
-
-
-//   if (!name.length || !region.length || !country.length || !type.length || !description.length) {
-//     document.getElementById('error-msg').classList.remove('hidden');
-//   } else {
-//     document.getElementById('error-msg').classList.add('hidden');
-//     ajaxAddNewPoi(name,region,country,type,lon, lat, description);
-//   };
-// }
-
-
 // SEARCH WITH MAP
 async function poiSearchMap(type, field) {
   // Send a request to our remote URL
@@ -412,12 +393,13 @@ function mapButtonClicked() {
 }
 
 // Make the AJAX run when we click a search button
-document.getElementById('searchButton').addEventListener('click', ()=> {
-  const type = document.getElementById('poiType').value;
-  const field = document.getElementById('poiField').value;
-  poiSearch(type, field);
-});
-
+if (document.getElementById('searchButton')){
+  document.getElementById('searchButton').addEventListener('click', ()=> {
+    const type = document.getElementById('poiType').value;
+    const field = document.getElementById('poiField').value;
+    poiSearch(type, field);
+  });
+}
 
 // Make the AJAX run when we click a map button
 if (document.getElementById('mapButton')){
