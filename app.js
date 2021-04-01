@@ -16,6 +16,10 @@ app.use(express.static('public'));
 app.use('/poi', poiRouter);
 app.use('/addNew', addNewRouter);
 
+// if 404, use 404.html page
+app.use(function (req, res, next) {
+    res.status(404).sendFile(`${process.env.PWD}/public/404.html`)
+  })
 
 // listen on port 3000
 app.listen(3000);
