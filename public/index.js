@@ -525,3 +525,44 @@ if (document.getElementById('addNewButton')){
     };
   });
 }
+
+// LOGIN
+if (document.getElementById('loginButton')){
+  document.getElementById('loginButton').addEventListener('click', ()=> {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    login(username, password);
+  });
+}
+
+async function login(username, password) {
+  const loginDetails = {
+     'username': username,
+     'password': password,
+  }
+
+  const response = await fetch(`/login`, {
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(loginDetails)
+  });
+
+  if(response.status == 401) {
+    iziToast.error({
+      title: 'Error',
+      message: 'The credentials do not match. Please try again',
+  });
+  } else {
+      const data = await response.json();
+      iziToast.success({
+        title: 'Success',
+        message: `You have logged in.`,
+        timeout: 1000,
+        onClosing: function(instance, toast, closedBy){
+          window.location="/"
+      }
+    });
+  } 
+}
