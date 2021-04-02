@@ -30,8 +30,6 @@ const poiRouter = require('./routes/poi');
 const addNewRouter = require('./routes/addNew');
 
 app.use(express.static('public'));
-app.use('/poi', poiRouter);
-app.use('/addNew', addNewRouter);
 
 // if the user is logged in
 app.get('/logged', (req, res) => {
@@ -42,6 +40,7 @@ app.get('/logged', (req, res) => {
 app.get('/login', (req, res, next) => {
     res.sendFile(`${process.env.PWD}/public/login.html`)
 });
+
 // Login route
 app.post('/login', (req, res) => {
     con.query(`SELECT * FROM poi_users WHERE username=? AND password=?`,
@@ -69,15 +68,19 @@ app.use( (req, res, next) => {
         if(req.session.username) { 
             next();
         } else {
-            res.status(401).json({error: "You're not logged in. Go away!"});
+            res.status(401).json({error: "Please log in!"});
         }
     }
 });
+
+app.use('/poi', poiRouter);
+app.use('/addNew', addNewRouter);
 
 // if 404, use 404.html page
 app.use(function (req, res, next) {
     res.status(404).sendFile(`${process.env.PWD}/public/404.html`)
   })
+
 
 // listen on port 3000
 app.listen(3000);

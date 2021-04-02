@@ -376,12 +376,17 @@ async function ajaxAddNewMapPoi(name,region,country,type,lon,lat,description) {
     iziToast.error({
       title: 'Error',
       message: 'Could not add a point of interest. Please try again.',
-  });
+    });
   } else if(response.status == 500){
     iziToast.error({
       title: 'Error',
       message: 'All fields must be filled with correct data.',
-  });
+    });
+  } else if(response.status == 401){
+    iziToast.error({
+      title: 'Error',
+      message: 'Please log in!',
+    });
   } else {
       const data = await response.json();
       iziToast.success({
@@ -489,11 +494,16 @@ async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
     iziToast.error({
       title: 'Error',
       message: 'Could not add a point of interest. Please try again.',
-  });
+    });
   } else if(response.status == 500){
     iziToast.error({
       title: 'Error',
       message: 'All fields must be filled with correct data.',
+    });
+  } else if(response.status == 401){
+    iziToast.error({
+      title: 'Error',
+      message: 'Please log in!',
   });
   } else {
       const data = await response.json();
