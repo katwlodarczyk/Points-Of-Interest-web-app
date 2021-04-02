@@ -1,3 +1,16 @@
+async function log(){
+  const response = await  fetch(`/logged`);
+  const result = await response.json();
+  if (result.username != null){
+    document.getElementById("loginIcon").className="hidden";
+    document.getElementById("loggedAs").innerHTML=`Logged in as <span class="font-semibold">${result.username}</span>`;
+    document.getElementById("logOut").innerHTML="Log out";
+  }
+}
+
+log();
+
+// TOAST NOTIFICATION SETTINGS
 iziToast.settings({
   timeout: 3000, // default timeout
   resetOnHover: true,
@@ -452,7 +465,7 @@ if (document.getElementById('recommendButton')){
 }
 
 
-//  add a poi
+//  add a new poi
 async function ajaxAddNewPoi(name,region,country,type,lon,lat,description) {
   const newPoi = {
      'name': name,
@@ -545,18 +558,59 @@ async function login(username, password) {
   const data = await response.json();
 
   if(data) {
+    document.getElementById('username').value='';
+      document.getElementById('password').value='';
       iziToast.success({
         title: 'Success',
         message: `You have logged in as ${data.username}`,
         timeout: 1000,
         onClosing: function(instance, toast, closedBy){
-          window.location="/"
-      }
-    });
+          window.location="/";
+        }
+      });
+      document.getElementById("loginIcon").className="hidden";
+      document.getElementById("loggedAs").innerHTML=`Logged in as <span class="font-semibold">${data.username}</span>`;
+      document.getElementById("logOut").innerHTML="Log out";
   } else {
     iziToast.error({
       title: 'Error',
       message: 'The credentials do not match. Please try again',
     });
   } 
+}
+
+async function logout() {
+
+  const response = await fetch(`/logout`, {
+      method: 'POST',
+      headers: {
+          'Content-Type' : 'application/json'
+      },
+  });
+  const data = await response.json();
+
+  if(data) {
+      iziToast.success({
+        title: 'Success',
+        message: `You have logged out.`,
+        timeout: 1000,
+        onClosing: function(instance, toast, closedBy){
+          window.location="/login";
+        }
+      });
+      document.getElementById("loginIcon").className="flex";
+      document.getElementById("loggedAs").className="hidden";
+      document.getElementById("logOut").className="hidden";
+  } else {
+    iziToast.error({
+      title: 'Error',
+      message: 'Something went wrong. Please try again',
+    });
+  } 
+}
+
+if (document.getElementById("logOut")){
+  document.getElementById("logOut").addEventListener('click',()=> {
+    logout();
+  })
 }

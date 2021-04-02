@@ -13,7 +13,7 @@ const sessionStore = new MySQLStore({ } , con.promise());
 
 app.use(expressSession({
     store: sessionStore, 
-    secret: 'CharlieAndAChocolateFactory', 
+    secret: 'CharlieAndTheChocolateFactory', 
     resave: false, 
     saveUninitialized: false, 
     rolling: true, 
@@ -33,16 +33,21 @@ app.use(express.static('public'));
 app.use('/poi', poiRouter);
 app.use('/addNew', addNewRouter);
 
+// if the user is logged in
+app.get('/logged', (req, res) => {
+    res.json({username: req.session.username || null} );
+});
+
 // login page
 app.get('/login', (req, res, next) => {
     res.sendFile(`${process.env.PWD}/public/login.html`)
 });
 // Login route
 app.post('/login', (req, res) => {
-    console.log(req.body)
     con.query(`SELECT * FROM poi_users WHERE username=? AND password=?`,
         [req.body.username, req.body.password], (error, results, fields) => {
             if(results.length == 1) {
+                req.session.username = req.body.username;
                 res.json({"username": req.body.username});
             } else {
                 res.status(401).json({ error: "Incorrect login Info!" });
@@ -55,26 +60,18 @@ app.post('/logout', (req, res) => {
     req.session = null;
     res.json({'success': 1 });
 });
-app.get('/logout', (req, res, next) => {
-    res.sendFile(`${process.env.PWD}/public/index.html`)
-});
-
-// 'GET' login route - useful for clients to obtain currently logged in user
-app.get('/login/info', (req, res) => {
-res.json({username: req.session.username || null} );
-});
 
 // Middleware which protects any routes using POST or DELETE from access by users who are are not logged in
 app.use( (req, res, next) => {
-if(["POST", "DELETE"].indexOf(req.method) == -1) {
-    next();
-} else {
-    if(req.session.username) { 
+    if(["POST", "DELETE"].indexOf(req.method) == -1) {
         next();
     } else {
-        res.status(401).json({error: "You're not logged in. Go away!"});
+        if(req.session.username) { 
+            next();
+        } else {
+            res.status(401).json({error: "You're not logged in. Go away!"});
+        }
     }
-}
 });
 
 // if 404, use 404.html page

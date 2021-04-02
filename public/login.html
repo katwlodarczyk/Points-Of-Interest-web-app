@@ -48,13 +48,16 @@
                 <li><a href="/about.html" class="text-brand-navy hover:text-brand-light-gray">About</a></li>
                 <li>
                     <div id="loginDiv">
-                        <a href="/login" title="Login">
+                        <a id="loginIcon" href="/login" title="Login">
                             <svg class="fill-current text-brand-navy hover:text-light-navy" width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.994 26.3498C7.368 26.3498 0 27.7098 0 33.1498C0 38.5918 7.322 39.9998 15.994 39.9998C24.62 39.9998 31.988 38.6418 31.988 33.1998C31.988 27.7578 24.668 26.3498 15.994 26.3498Z" fill="fill-current"/>
                                 <path opacity="0.4" d="M15.994 21.168C21.87 21.168 26.578 16.458 26.578 10.584C26.578 4.71 21.87 0 15.994 0C10.12 0 5.40997 4.71 5.40997 10.584C5.40997 16.458 10.12 21.168 15.994 21.168Z" fill="#506A7F"/>
                             </svg> 
                         </a>
-                        
+                        <div class="flex space-x-4">
+                            <p id="loggedAs" class="text-brand-navy"></p>
+                            <button id="logOut" class="text-red-600"></button>
+                        </div>
                     </div>
                 </li>
             </ul>
