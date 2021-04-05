@@ -327,12 +327,84 @@ async function poiSearchMap(type, field) {
         map.setView(pos, 8);
 
         const marker = L.marker(pos).addTo(map);
-        marker.bindPopup(`<b>Name:</b> ${result.name} <br> <b>Description:</b> ${result.description}`);
+        marker.bindPopup(
+          ` 
+            <b>Name:</b> 
+            ${result.name} <br> 
+            <b>Description:</b> 
+            ${result.description} <br> 
+            <button onClick="showReviewField()" id="showReviewField" type="submit" class="w-full bg-cadet-blue border border-transparent rounded-md shadow-sm mt-2 py-1 px-2 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
+            Add a review
+          </button>
+            <b id="reviewHeaderTitle" class="hidden" >Add a review:</b> 
+            <textarea id="review" name="review" rows="2" class="hidden text-brand-navy border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-cadet-blue focus:border-cadet-blue mt-1 py-1 px-2 block w-full text-xs"></textarea>
+            <span id="error-msg" class="pt-1 pb-0 hidden col-span-6 text-xs text-red-500">Plase write a review.</span>
+            <button onClick="addReview(${result.ID})" id="addReviewButton" type="submit" class="hidden w-full bg-cadet-blue border border-transparent rounded-md shadow-sm mt-2 py-1 px-2 inline-flex justify-center text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-navy">
+              Add
+            </button>
+          `);
       });
      
   }
 }
 
+function showReviewField(){
+  document.getElementById('showReviewField').classList.add('hidden');
+  document.getElementById('reviewHeaderTitle').classList.remove('hidden');
+  document.getElementById('review').classList.remove('hidden');
+  document.getElementById('addReviewButton').classList.remove('hidden');
+}
+
+function addReview(id){
+  const poi_id = id;
+  const review = document.getElementById('review').value;
+
+  if(!review.length) {
+    document.getElementById('error-msg').classList.remove('hidden');
+  } else {
+    document.getElementById('error-msg').classList.add('hidden');
+    ajaxAddMapReview(poi_id,review);
+  };
+}
+
+// add a review
+async function  ajaxAddMapReview(poi_id,review) {
+  const newReview= {
+    'poi_id': poi_id,
+    'review': review
+  }
+
+  const response = await fetch(`/poi/review`, {
+    method: 'POST',
+    headers: {
+        'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(newReview)
+  });
+
+  if(response.status == 400) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Please fill a review field.',
+    });
+  } else if(response.status == 500){
+    iziToast.error({
+      title: 'Error',
+      message: 'Something went wrong, please try again',
+    });
+  } else if(response.status == 401){
+    iziToast.error({
+      title: 'Error',
+      message: 'Please log in to add a review',
+    });
+  } else {
+      const data = await response.json();
+      iziToast.success({
+        title: 'Success',
+        message: 'You have added a new review',
+    });
+  }
+}
 
 function addNew(){
   const name = document.getElementById('name').value;
