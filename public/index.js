@@ -143,7 +143,7 @@ async function poiSearch(type, field) {
         <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
           Description
         </th>
-        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        <th scope="col" class="pl-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
           Recommendations
         </th>
       </tr>
@@ -159,16 +159,16 @@ async function poiSearch(type, field) {
       result.forEach ( result => {
           html += `
             <tr class="bg-white">
-              <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td class="px-4 py-4 whitespace-wrap text-sm font-medium text-gray-900">
                 ${result.name}
               </td>
               <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                 ${result.type}
               </td>
-              <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-4 py-4 whitespace-wrap text-sm text-gray-500">
                 ${result.country}
               </td>
-              <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-4 py-4 whitespace-wrap text-sm text-gray-500">
                 ${result.region}
               </td>
               <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -177,7 +177,7 @@ async function poiSearch(type, field) {
               <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                 ${result.lat}
               </td>
-              <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="px-4 py-4 whitespace-wrap text-sm text-gray-500">
                 ${result.description}
               </td>
               <td class="pl-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -189,6 +189,10 @@ async function poiSearch(type, field) {
       });
       document.getElementById('results').innerHTML = header +  resultsdivsstart + tableHeader + html + resultsdivsend;
   }
+}
+
+function showTableReviewField() {
+  document.getElementById("tableModal").classList.remove('hidden');
 }
 
 // SEARCH WITH MAP
