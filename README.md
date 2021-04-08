@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/29167607/114053315-c00c4000-9886-11eb-9da5-c3a7a1b72fcc.png" width="100%"></img>
+# <img src="https://user-images.githubusercontent.com/29167607/114053315-c00c4000-9886-11eb-9da5-c3a7a1b72fcc.png" width="80%"></img>
 ### web application development
 #
 
@@ -36,3 +36,8 @@ check ```.env``` file for environment variables
 <img src="https://user-images.githubusercontent.com/29167607/114049788-a74e5b00-9883-11eb-9995-3b246f438aad.jpg" width="30%"></img> 
 <img src="https://user-images.githubusercontent.com/29167607/114049744-9dc4f300-9883-11eb-91a8-5aa3c779e283.jpg" width="30%"></img> 
 <img src="https://user-images.githubusercontent.com/29167607/114050649-5e4ad680-9884-11eb-8eb2-e72741e228a1.jpg" width="30%"></img> 
+#
+
+<figure class="video_container">
+  <iframe src="https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview" width="640" height="480"></iframe>
+</figure>
