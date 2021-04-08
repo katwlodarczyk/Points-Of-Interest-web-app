@@ -63,9 +63,9 @@ app.post('/logout', (req, res) => {
     res.json({'success': 1 });
 });
 
-// Middleware to protect POST and DELETE routes from access by not logged in users
+// Middleware to protect POST routes from access by not logged in users
 app.use( (req, res, next) => {
-    if(["POST", "DELETE"].indexOf(req.method) == -1) {
+    if(["POST"].indexOf(req.method) == -1) {
         next();
     } else {
         if(req.session.username) { 
