@@ -43,6 +43,9 @@ app.get('/login', (req, res, next) => {
 
 // Login route
 app.post('/login', (req, res) => {
+    if(!req.body.username || !req.body.password || req.body.username.length === 0 || req.body.password.length === 0) {
+        return res.status(400).json({message: "Invalid data"});
+    } 
     con.query(`SELECT * FROM poi_users WHERE username=? AND password=?`,
         [req.body.username, req.body.password], (error, results, fields) => {
             if(results.length == 1) {

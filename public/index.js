@@ -180,7 +180,7 @@ async function poiSearch(type, field) {
               <td class="px-4 py-4 whitespace-wrap text-sm text-gray-500">
                 ${result.description}
               </td>
-              <td class="pl-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td class="pl-6 pr-4 py-4 whitespace-nowrap text-sm text-gray-500">
                 ${result.recommendations}
                 <a id="recommendButton" onclick='recommend(${result.ID})' class="pl-8 text-sm text-brand-orange hover:underline cursor-pointer">Recommend</a>
               </td>
@@ -643,7 +643,7 @@ async function login(username, password) {
   });
   const data = await response.json();
 
-  if(data) {
+  if((response.status == 200)) {
     document.getElementById('username').value='';
       document.getElementById('password').value='';
       iziToast.success({
