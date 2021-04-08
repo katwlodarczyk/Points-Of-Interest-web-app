@@ -3,7 +3,7 @@
 #
 
 This application allows users to look up information on places to visit whilst on holiday or in their neighbourhood.
-Database includes places like world cities, historical sites, countryside areas, recommended restaurans, pubs, bars. 
+Database includes places like world cities, historical sites, countryside areas, recommended restaurants, pubs, bars. 
 Users can also add new points of interest to the database, add a review or recommend a place.
 #
 Technologies used:
