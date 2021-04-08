@@ -39,5 +39,5 @@ check ```.env``` file for environment variables
 #
 
 <figure class="video_container">
-  <iframe src="https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview" width="640" height="480"></iframe>
+  <iframe src="https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
