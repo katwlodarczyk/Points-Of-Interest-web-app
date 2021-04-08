@@ -37,8 +37,6 @@ check ```.env``` file for environment variables
 <img src="https://user-images.githubusercontent.com/29167607/114049744-9dc4f300-9883-11eb-91a8-5aa3c779e283.jpg" width="30%"></img> 
 <img src="https://user-images.githubusercontent.com/29167607/114050649-5e4ad680-9884-11eb-8eb2-e72741e228a1.jpg" width="30%"></img> 
 #
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
+
+
+![](https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview)
