@@ -7,6 +7,9 @@ addNewRouter.get('/', (req, res, next) => {
 });
 
 addNewRouter.post('/poi', (req,res) => {
+    if(!req.body.name || !req.body.type || !req.body.country || !req.body.region || !req.body.lon || !req.body.lat || !req.body.description){
+        return res.status(400).json({message: "Invalid data. Please fill all of the fields and try again."});
+    }
     con.query('INSERT INTO pointsofinterest(name,type,country,region,lon,lat,description) VALUES (?,?,?,?,?,?,?)',[req.body.name, req.body.type, req.body.country, req.body.region, req.body.lon, req.body.lat, req.body.description], (error,results, fields)=> {
         if(error) {
             res.status(500).json({error: error});

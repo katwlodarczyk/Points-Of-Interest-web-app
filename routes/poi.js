@@ -71,11 +71,12 @@ poiRouter.post('/:id/recommend', (req,res) => {
 
 
 poiRouter.post('/review', (req,res) => {
+    if(!req.body.review || req.body.review.length === 0) {
+        return res.status(400).json({message: "Invalid data"});
+    } 
     con.query('INSERT INTO poi_reviews(poi_id,review) VALUES (?,?)',[req.body.poi_id, req.body.review], (error,results, fields)=> {
         if(error) {
             res.status(500).json({error: error});
-        } else if(!req.body.review) {
-            res.status(400).json({message: "Invalid data"});
         } else {
             res.json({'message': 'Successfully reviewed.'});
         }
