@@ -15,15 +15,15 @@ Technologies used:
 
 ### To run the application: 
 1. Clone or download the repo
-2. ```npm install```  to install all necessary packages
-3. ```node app.js``` to start the server 
+2. `npm install`  to install all necessary packages
+3. `node app.js` to start the server 
 OR 
-```npm run dev``` to allow for automatic restarts
-4. Run ```npx tailwindcss-cli@latest build ./public/style.css -o ./public/allstyles.css``` to build tailwind
+`npm run dev` to allow for automatic server restarts
+4. Run `npx tailwindcss-cli@latest build ./public/style.css -o ./public/allstyles.css` to build tailwind
 5. To build for production 
-    ```NODE_ENV=production npx tailwindcss-cli@latest build ./public/style.css -o ./public/allstyles.css```
+    `NODE_ENV=production npx tailwindcss-cli@latest build ./public/style.css -o ./public/allstyles.css`
 
-check ```.env``` file for environment variables
+check `.env` file for environment variables
 
 #
 ### Screenshots:
@@ -38,5 +38,3 @@ check ```.env``` file for environment variables
 <img src="https://user-images.githubusercontent.com/29167607/114050649-5e4ad680-9884-11eb-8eb2-e72741e228a1.jpg" width="30%"></img> 
 #
 
-
-![](https://drive.google.com/file/d/1qRsPT-o_Mzdfl0eqb3Puonv53z5Sa7ZW/preview)
