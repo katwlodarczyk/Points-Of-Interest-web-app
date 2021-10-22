@@ -39,4 +39,4 @@ check `.env` file for environment variables
 #
 
 ### Screencast video 
-<a target="_blank" href="https://vimeo.com/546893878" />
+<a href="https://vimeo.com/546893878">POI-node.js app by kat wlodarczyk</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
